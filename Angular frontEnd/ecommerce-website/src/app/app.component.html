@@ -1,0 +1,22 @@
+<nav class="navbar navbar-light bg-light justify-content-between">
+  <div class="container">
+    <a routerLink="/products" class="navbar-brand">Buy A-Z</a>
+    <app-product-search></app-product-search>
+    <app-login-status></app-login-status>
+    <app-cart-status></app-cart-status>
+
+  </div>
+</nav>
+<div class="container">
+  <div class="mt-3 row ">
+    <div class="col-2">
+
+      <app-product-list-menu> </app-product-list-menu>
+
+    </div>
+
+    <div class="col-10">
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+</div>

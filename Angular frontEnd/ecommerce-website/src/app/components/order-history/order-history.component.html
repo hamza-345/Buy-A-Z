@@ -1,0 +1,37 @@
+<div class="container">
+    <div *ngIf="orderList.length > 0">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th width="40%" scope="col">Order Tracking Number</th>
+                    <th width="15%" scope="col">Total Price</th>
+                    <th width="15%" scope="col">Total Quantity</th>
+                    <th width="30%" scope="col">Date Created</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let tempOrder of orderList">
+                    <td>
+                        <div style=" text-align: left;">
+                            <p>{{tempOrder.orderTrackingNumber}}</p>
+                        </div>
+                    </td>
+                    <td>{{tempOrder.totalPrice | currency: 'CAD'}}</td>
+                    <td>
+                        {{tempOrder.totalQuantity}}
+                    </td>
+
+                    <td>
+                        {{tempOrder.dateCreated | date:'medium'}}
+                    </td>
+
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div *ngIf="orderList.length ==0">
+        <div class="alert alert-danger" role="alert">
+            No orders!
+        </div>
+    </div>
+</div>

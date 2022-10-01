@@ -1,0 +1,36 @@
+package com.website.Ecommerce.Website.entity;
+
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+import javax.persistence.*;
+import java.math.BigDecimal;
+
+@Entity
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
+@Table(name="order_item")
+public class OrderItem {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
+    private Long id;
+
+    @Column(name = "image_url")
+    private String imageUrl;
+
+    @Column(name = "unit_price")
+    private BigDecimal unitPrice;
+
+    @Column(name = "quantity")
+    private int quantity;
+
+    @Column(name = "product_id")
+    private Long productId;
+
+    @ManyToOne
+    @JoinColumn(name = "order_id")
+    private Order order;
+}

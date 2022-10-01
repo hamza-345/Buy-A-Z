@@ -1,0 +1,80 @@
+<div class="container">
+    <form [formGroup]="createUserFormGroup" (ngSubmit)="submitForm()">
+        <div formGroupName="customer" class="form-group row">
+            <fieldset class="border rounded-3 p-3">
+                <legend class="float-none w-auto px-3">Customer</legend>
+                <div class="row m-2">
+                    <label class="col-sm-2 col-form-label">First Name:</label>
+                    <div class="col-sm-9">
+                        <input type="text" formControlName="firstName" class="form-control">
+                        <div *ngIf="firstName?.invalid && (firstName?.dirty || firstName?.touched)"
+                            class="alert alert-danger mt-2">
+                            <div *ngIf="firstName?.errors?.['required'] || firstName?.errors?.['noWhiteSpace']">
+                                First Name is required
+                            </div>
+
+                            <div *ngIf="firstName?.errors?.['minlength']">
+                                First Name should be 2 characters long
+                            </div>
+
+
+
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row m-2">
+                    <label class="col-sm-2 col-form-label">Last Name:</label>
+                    <div class="col-sm-9">
+                        <input type="text" formControlName="lastName" class="form-control">
+                        <div *ngIf="lastName?.invalid && (lastName?.dirty || lastName?.touched)"
+                            class="alert alert-danger mt-2">
+                            <div *ngIf="lastName?.errors?.['required'] || lastName?.errors?.['noWhiteSpace']">
+                                Last Name is required
+                            </div>
+                            <div *ngIf="lastName?.errors?.['minlength'] ">
+                                Last Name should be 2 characters long
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row m-2">
+                    <label class="col-sm-2 col-form-label">Login Email:</label>
+                    <div class="col-sm-9">
+                        <input type="text" formControlName="email" class="form-control">
+                        <div *ngIf="email?.invalid && (email?.dirty || email?.touched)" class="alert alert-danger mt-2">
+                            <div *ngIf="email?.errors?.['required']">
+                                Email is required
+                            </div>
+                            <div *ngIf="email?.errors?.['pattern']">
+                                Email should be valid
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row m-2">
+                    <label class="col-sm-2 col-form-label">Password:</label>
+                    <div class="col-sm-9">
+                        <input type="password" formControlName="password" class="form-control">
+                        <div *ngIf="password?.invalid && (password?.dirty || password?.touched)"
+                            class="alert alert-danger mt-2">
+                            <div *ngIf="password?.errors?.['required']">
+                                password is required
+                            </div>
+                            <div *ngIf="password?.errors?.['pattern']">
+                                password should be valid
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </fieldset>
+        </div>
+
+
+
+        <div class="text-center">
+            <button type="submit" class="btn btn-primary px-3 m-3">Create Account</button>
+        </div>
+
+    </form>
+</div>

@@ -1,0 +1,7 @@
+<ul class="list-group list-group-flush">
+    <li class="list-group-item" *ngFor="let tempCategory of productCategories">
+        <a routerLink="/category/{{tempCategory.id}}" class="list-group-item" routerLinkActive="active">
+            {{tempCategory.categoryName}}
+        </a>
+    </li>
+</ul>

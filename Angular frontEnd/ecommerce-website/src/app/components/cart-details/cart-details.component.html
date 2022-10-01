@@ -1,0 +1,53 @@
+<div class="container">
+    <div *ngIf="cartItems.length > 0">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th width="20%" scope="col">Product Image</th>
+                    <th width="50%" scope="col">Product Details</th>
+                    <th width="30%" scope="col"></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let tempItem of cartItems">
+                    <td>
+                        <div style=" text-align: left;">
+                            <img src="{{tempItem.imageUrl}}" width="150px" alt="Product Image">
+                        </div>
+                    </td>
+                    <td>{{tempItem.name}} {{tempItem.unitPrice}}</td>
+                    <td>
+                        <div>
+                            <h6>Quantity</h6>
+                            <button (click)="addToCart(tempItem)" class="btn btn-primary mx-4">
+                                <i class="fa-solid fa-plus"></i>
+                            </button>
+                            {{tempItem.quantity}}
+                            <button (click)="decrement(tempItem)" class="btn btn-primary mx-4">
+                                <i class="fa-solid fa-minus"></i>
+                            </button>
+                        </div>
+                        <button (click)="remove(tempItem)" class="btn btn-primary mt-2">Remove</button>
+                        <p>Subtotal: {{tempItem.quantity * tempItem.unitPrice | currency : 'CAD'}}</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td>
+                        <h6>Total Quantity: {{totalQuantity}}</h6>
+                        <h6>Shipping: Free</h6>
+                        <h6>Total Price: {{totalPrice | currency : 'CAD'}}</h6>
+                        <a routerLink="/checkout" class="btn btn-primary">Checkout</a>
+                    </td>
+
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div *ngIf="cartItems.length ==0">
+        <div class="alert alert-danger" role="alert">
+            No items in the shopping cart!
+        </div>
+    </div>
+</div>
